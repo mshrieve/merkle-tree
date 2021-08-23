@@ -7,6 +7,7 @@
 
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-ethers'
+import '@typechain/hardhat'
 import 'hardhat-gas-reporter'
 import './tasks'
 
@@ -20,7 +21,7 @@ module.exports = {
   },
   paths: {
     sources: './contracts',
-    tests: './tests',
+    tests: './test',
     cache: './cache',
     artifacts: './artifacts'
   }
