@@ -1,6 +1,7 @@
-# my_hardhat_template
+# merkle-tree
 
 A simple merkle tree implementation
+
 See tests for usage
 
 ## tests
