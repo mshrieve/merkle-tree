@@ -10,6 +10,10 @@ task('accounts', 'Prints the list of accounts', async (args, hre) => {
   }
 })
 
+task('zeroHash', 'computes the hash of zero', async (args, { ethers }) => {
+  console.log(ethers.utils.keccak256(ethers.constants.HashZero))
+})
+
 task(
   'merkleRoot',
   'computes a particular merkle root',

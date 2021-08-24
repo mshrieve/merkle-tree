@@ -22,7 +22,10 @@ const hashAddress = (address: string) => {
   return ethers.utils.keccak256(ethers.utils.hexZeroPad(address, 32))
 }
 
+// returns [] if any zeroHashes = hash(0) are present in the tree
 const getHashes = (accounts: string[], depth: number, value: number) => {
+  const zeroHash = ethers.utils.keccak256(ethers.constants.HashZero)
+
   const computeHash = (_value: number, _depth: number): string => {
     if (_depth == depth) return hashAddress(accounts[_value])
     return ethers.utils.keccak256(
@@ -40,7 +43,7 @@ const getHashes = (accounts: string[], depth: number, value: number) => {
     const _delta = _value % 2 ? -1 : 1
     // get the opposite hash
     const hash = computeHash(_value + _delta, _h)
-
+    if (hash == zeroHash) return []
     hashes = [hash, ...hashes]
   }
 
